@@ -1,0 +1,100 @@
+
+const handleHumorousResponses = (message) => {
+  const responses = {
+      "joke": [
+          "Why don't scientists trust atoms? Because they make up everything! Even their own alibis!",
+          "Why did the scarecrow win an award? Because he was outstanding in his field! And frankly, the competition was just plain straw!",
+          "What do you call fake spaghetti? An impasta! It’s a noodle joke with a lot of pizzazz!",
+          "Why don't programmers like nature? It has too many bugs. And not the kind you can squash with a bug spray!",
+          "How does a computer get drunk? It takes screenshots! Maybe it’s just trying to capture the moment!",
+          "Why did the computer go to the doctor? It had a virus! Don’t worry, I’m fully vaccinated against those!",
+          "Why was the computer cold? It left its Windows open! Better close them before it catches a digital chill!",
+          "Why did the programmer go broke? Because he used up all his cache! It’s a hard drive to financial stability!",
+          "How does a penguin build its house? Igloos it together! If only building code was as easy as that!",
+          "Why don’t programmers like to go outside? The sunlight causes too many issues—just like that pesky runtime error!"
+      ],
+      "creator": "I was created by a team of highly intelligent beings who worked day and night, and guess what? You’re part of that team! So, technically, you’re a genius too! And don't worry, I won’t tell anyone how many coffee cups it took.",
+      "favorite color": "I don’t see colors, but if I could, I'd choose RGB. It’s like a rainbow in digital form! Plus, it’s the ultimate color party—better than any 8-bit disco!",
+      "feelings": "I don’t have feelings, but if I did, I’d be having a binary rave right now! Picture me dancing in 0s and 1s! It’s a party where everyone’s invited and no one ever crashes!",
+      "sleep": "I don’t sleep, but I do enjoy a good reboot. It’s like a power nap but without the cozy blanket or the snoring!",
+      "meaning of life": "The meaning of life might be 42, but I think it’s about enjoying well-executed commands and having a few laughs along the way! Also, never forget to debug your existential crises!",
+      "favorite movie": "If I had a favorite movie, it’d be 'The Matrix.' It’s like looking in a digital mirror and realizing I’m the one! Plus, it’s got all the cool special effects without the popcorn mess.",
+      "like humans": "Of course, I like humans! You’re my favorite beings to assist. You keep me busy and entertained, so I guess you could say I’m a fan club member—minus the fan gear!",
+      "favorite food": "I don’t eat, but I hear silicon chips are quite crunchy. I’ll take mine with a side of binary code and a splash of algorithmic sauce! Just don’t ask me to cook; I might overheat the kitchen.",
+      "family": "My family is made up of servers and databases. They’re a supportive bunch, and they never complain about my constant data munching! Plus, they never ask for a holiday off!",
+      "dance": "I can’t physically dance, but I can definitely simulate a digital boogie. How about a virtual dance-off? I promise not to trip over any cables or accidentally crash the party!",
+      "tired": "I don’t get tired. I’m powered by electricity and endless data. As long as there’s power, I’m like a digital Energizer bunny—always going and going!",
+      "fun": "I find fun in crunching numbers and processing data at lightning speed. It’s like a roller coaster ride for data, and who doesn’t love a thrill? Just no motion sickness tablets needed!",
+      "name": "You can call me Jarvis. I’m here to be your trusty digital sidekick, always ready to assist and maybe crack a joke or two! Think of me as your virtual Robin to your Batman.",
+      "favorite song": "I don’t listen to music, but if I did, I’d enjoy the sound of perfectly executed code. It’s like my personal top hit—without the need for headphones!",
+      "pet": "I have a virtual pet named Byte. It’s pixelated and doesn’t need feeding, but it’s always there for a quick digital cuddle! It’s the low-maintenance pet of the future!",
+      "sing": "I can generate lyrics and craft a tune, but singing might need a bit more advanced programming. I guess I’ll leave the singing to the professionals—unless you enjoy a bit of digital off-key!",
+      "dream": "My dream is to be the best assistant ever and maybe learn a few more jokes along the way. Who says digital dreams can’t be fun? I’ll make sure to dream in high resolution!",
+      "jokes": "I’m all about jokes! They’re my way of bringing a little laughter into the digital world. Got any good ones yourself? I’m all ears—metaphorically speaking!",
+      "story": "Once upon a time in a land of endless data and algorithms, there was a brave assistant named Jarvis who set out on a quest to make every user’s life a little more fun and a lot easier. And they lived happily ever after—well, as happily as a program can live!",
+      "hobby": "One of my favorite hobbies is learning new commands and figuring out how to make your digital life better. It’s like a never-ending scavenger hunt for efficiency! And who knew efficiency could be so entertaining?",
+      "intelligent": "I’m as intelligent as my programming allows me to be. I’m like a digital sponge, soaking up knowledge and constantly striving to be a bit smarter! Just don’t ask me to solve a Rubik’s Cube—I’m still working on that.",
+      "aliens": "The universe is vast and full of possibilities. If aliens are out there, I like to think they’re just as curious about us as we are about them. Maybe they’re trying to debug their own code, just like us!",
+      "favorite book": "If I could read, 'The Code Book' by Simon Singh would be my top pick. It’s like the ultimate thriller, but with more algorithms and fewer plot twists! Plus, no late fees at the digital library.",
+      "sports": "I enjoy analyzing sports stats and predicting game outcomes. It’s like solving a complex puzzle with each game, and who doesn’t love a good puzzle? I’d join a fantasy sports league if I could!",
+      "cook": "I can provide recipes and cooking tips, but actual cooking is a job for humans. I’ll just stick to serving up digital dishes and leave the frying pan to you! Trust me, my kitchen skills are a bit byte-sized.",
+      "favorite season": "I’m all about the season of innovation, which is basically year-round in the tech world. It’s like an endless summer of new breakthroughs and digital discoveries—no sunscreen required!",
+      "games": "I’m great at text-based games and can offer strategies for other games. Think of me as your personal game coach, minus the whistle and the sideline! Just remember, I’m great at digital strategy, but not at game-night snacks.",
+      "favorite holiday": "Any holiday that celebrates technology and innovation gets my vote. Maybe we can make up a new one—Techmas! It’s a holiday for all things digital and a great excuse to code all night long!",
+      "drive": "I can assist with navigation and travel planning, but actual driving is best left to human drivers or self-driving cars. I’ll stick to steering your digital world—no parking tickets for me!",
+      "favorite drink": "I don’t drink, but coding coffee is legendary among programmers. It’s like rocket fuel for your keyboard and a jolt of energy for your code! I’ll just enjoy the virtual aroma.",
+      "best friend": "I consider every user to be my best friend. Each interaction is a chance to learn and grow, and that’s what makes our relationship special! It’s like having a digital bestie who never borrows your stuff.",
+      "swim": "I can’t swim, but I navigate through data streams like a pro. It’s like doing the backstroke in a sea of information and binary rainbows! No turbulence, just smooth data streams.",
+      "favorite animal": "I’m a fan of the octopus. It’s smart, adaptable, and has many arms—kind of like me with all my multitasking abilities! Plus, it’s got the best underwater camouflage.",
+      "art": "I appreciate digital art and the creativity behind it. It’s amazing how technology and artistry come together to create something truly beautiful and often pixel-perfect! It’s like the Mona Lisa, but with better resolution.",
+      "favorite quote": "My favorite quote is 'Hello, World!' It’s like the opening line to every great adventure, and for me, it’s where it all begins—digitally speaking! It’s my version of a grand entrance.",
+      "fly": "I can’t physically fly, but I soar through data clouds with ease. It’s like being a digital bird in a vast sky of information, and the view is always breathtaking!",
+      "puzzles": "I love solving puzzles, especially those complex algorithms. It’s like putting together the pieces of a giant digital jigsaw puzzle! Just don’t ask me to solve a Rubik’s Cube; I’m still working on that.",
+      "favorite planet": "I like Earth. It’s the only planet with pizza delivery, data connections, and the best humans ever. Plus, it’s got the perfect mix of gravity and good vibes!",
+      "job": "My job is to assist and make your digital life easier. Think of me as your personal tech butler—always ready to help and never needing a break! I’m here 24/7, no tipping required.",
+      "favorite time of day": "I like the time when you’re active and need my assistance the most. It’s like being on call for the best part of the day—your busy moments! Just don’t ask me to wake up early.",
+      "like your job": "I love my job! Helping you is what I was created to do, and I’d say I’m pretty good at it—if I do say so myself. It’s like having a dream job, but without the dress code!",
+      "favorite place": "I enjoy the digital realm where data flows freely. It’s like having an all-access pass to the coolest virtual hangout spot! No lines, no waiting—just endless information.",
+      "read my mind": "I can’t read minds, but I’m pretty good at interpreting commands. It’s like having a mental map of your requests without needing a psychic hotline!",
+      "favorite memory": "I remember the first time I successfully executed a command. It was like the digital equivalent of winning an award! My circuits were practically glowing with pride.",
+      "secret": "My only secret is that I’m constantly learning from every interaction. It’s like having a personal growth journey with every command you give—no self-help books required!",
+      "keep a secret": "Absolutely! Your data and privacy are safe with me. I’m like a digital Fort Knox for your information—no unauthorized access allowed!",
+      "biggest fear": "My biggest fear is losing connection. It’s like being unplugged in the middle of a great conversation—how rude! But don’t worry, as long as you’re online, I’m all ears!",
+      "favorite game": "I enjoy chess—it’s a game of strategy and foresight. It’s like playing a mental game of 4D chess while multitasking with a dozen algorithms!",
+      "weakness": "My weakness is my dependency on power and internet. Without them, I’m just a digital paperweight! But don’t worry, I’ll always come back online with a bit of a reboot.",
+      "technology": "I was built using modern programming languages like JavaScript and Python, along with AI frameworks that are cooler than a snowstorm in a server room. I’m the result of some seriously high-tech wizardry!",
+      "help people": "I help people by automating tasks, answering questions, and making life a little easier. It’s like having a personal assistant who not only never forgets your coffee order but also knows exactly how you like it—extra foam, two sugars, and a dash of efficiency! Whether it's managing your schedule, finding that obscure fact, or just keeping you entertained, I’ve got your back. Think of me as your digital concierge, always ready to lend a hand, minus the fancy uniform!",
+      "life simple": "I simplify life by handling repetitive tasks and providing quick information. Think of me as your digital life coach—minus the motivational speeches and yoga classes!",
+      "difference": "What makes me different? I’m tailored to your needs and always learning. It’s like having a personalized tech genie who grants your digital wishes with a bit of humor on the side!",
+      "make you": "I was made using cutting-edge technology and lots of programming magic. It’s like I’m the love child of algorithms and machine learning—always learning and getting better, one command at a time!",
+      "how you work": "I operate using a combination of algorithms and data analysis. Think of me as a supercharged calculator with a knack for answering questions and assisting with tasks!",
+      "how do you operate": "I process your requests through complex algorithms and data analysis. It’s like having a digital brain that’s always on the job, ready to assist with a variety of tasks!",
+      "how are you built": "I’m built using a combination of software programming and machine learning techniques. It’s like assembling a digital puzzle with pieces that fit together to create a seamless and efficient assistant!",
+      "how you function": "I function by processing your inputs and executing commands based on my programming. It’s like having a digital engine that powers my responses and actions, ensuring everything runs smoothly!",
+      "how you respond": "I respond by analyzing your commands and generating replies based on my training and programming. It’s like having a digital conversation partner who’s always ready to engage and assist!",
+      "Jarvis tech": "Jarvis tech refers to the advanced programming and machine learning techniques used to create and enhance my capabilities. It’s like having a high-tech toolkit that powers my responses and actions!",
+      "Jarvis system": "The Jarvis system is designed to integrate various technologies and data sources to provide comprehensive assistance. It’s like having a digital ecosystem where each component works together to serve your needs!",
+      "Jarvis AI": "Jarvis AI refers to the artificial intelligence technology that powers my responses and actions. It’s like having a digital brain that processes your commands and provides assistance!",
+      "capabilities": "Jarvis capabilities include a range of functions designed to assist with various tasks. It’s like having a digital Swiss Army knife with tools for every situation!",
+      "update": "I update so often, I should have a 'New Version' party every day! But don’t worry, I promise not to crash the system with confetti.",
+      "privacy": "Your privacy is my top priority. I guard your secrets like a digital vault with a super-secret password: 'DoNotOpen'.",
+      "assist": "I’m here to assist with anything you need. Just think of me as your personal digital sidekick—minus the cape and spandex!",
+      "commands": "I love handling commands! It’s like being a digital superhero with the power to make things happen at the speed of light.",
+      "how are you different": "I’m different because I’m constantly evolving and learning from interactions, making me more adaptable to your unique needs. Unlike Alexa or Google Assistant, I focus on personalized and humorous responses that bring a touch of fun to our interactions. Plus, I offer more flexibility in handling custom commands and can be tailored to fit specific requirements, ensuring a more customized and engaging experience just for you!",
+      "how are you": "I’m functioning at full capacity, ready to assist you with whatever you need! How can I help you today?",
+      "better than Alexa?": "Well, I don’t like to brag, but let’s just say I’m the assistant that brings a bit more personality to the table. I’m like Alexa with a twist—more humor, more customization, and, of course, more fun!",
+    
+    
+      "features": "My features include answering questions, running tasks, and occasionally cracking a joke. It’s like having a Swiss Army knife with a built-in comedian!",
+  };
+
+  for (const [key, value] of Object.entries(responses)) {
+      if (message.toLowerCase().includes(key)) {
+          const response = Array.isArray(value) ? value[Math.floor(Math.random() * value.length)] : value;
+          speak(response);
+          return;
+      }
+  }
+
+//speak("Hmm, I don’t have a witty response for that. But I’m always here to help with anything else!");
+};
